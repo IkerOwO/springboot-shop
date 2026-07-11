@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { loginClient } from '../../api/api';
 
 type FormState = {
   email: string;
@@ -10,6 +12,7 @@ type FormState = {
 };
 
 export default function LoginPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormState>({
     email: '',
     password: '',
@@ -27,18 +30,13 @@ export default function LoginPage() {
     event.preventDefault();
 
     try {
-      const url = `http://localhost:8080/client/${encodeURIComponent(formData.email)}/${encodeURIComponent(formData.password)}`;
-      const response = await fetch(url, {
-        method: 'GET',
-      });
+      const { data } = await loginClient(formData.email, formData.password);
 
-      if (!response.ok) {
-        throw new Error('Error al iniciar sesión');
+      if (data) {
+        localStorage.setItem('user', JSON.stringify(data));
+        setFormData({ email: '', password: '' });
+        router.push('/');
       }
-
-      const data = await response.json();
-      console.log('Login exitoso:', data);
-      setFormData({ email: '', password: '' });
     } catch (error) {
       console.error('Error en login:', error);
     }
