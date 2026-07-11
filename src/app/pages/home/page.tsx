@@ -3,8 +3,10 @@ import NavbarTop from "../../components/navbar/navbar";
 export default function HomePage(){
     return(
         <>
-        <NavbarTop />
-
+        <main>
+            <NavbarTop />
+            
+        </main>
         </>
     )
 }

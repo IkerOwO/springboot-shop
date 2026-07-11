@@ -38,6 +38,11 @@ public class ClientController {
     public Optional<Client> getById(@RequestParam Long id) {
         return service.getById(id);
     }
+
+    @GetMapping("/{email}/{password}")
+    public Optional<Client> loginClient(@PathVariable String email, @PathVariable String password) {
+        return service.login(email, password);
+    }
     
     @PostMapping("/createClient")
     public void createClient(@RequestBody Client client) {

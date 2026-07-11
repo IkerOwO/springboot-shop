@@ -30,6 +30,11 @@ public class ClientService {
         return repository.findById(id);
     }
 
+    @Transactional(readOnly = true)
+    public Optional<Client> login(String email, String password) {
+        return repository.login(email, password);
+    }
+
     @Transactional
     public void createClient(Client client){
         Optional<Client> opClient = repository.findById(client.getId());
@@ -48,6 +53,7 @@ public class ClientService {
         );
     }
 
+    @Transactional
     public void updatePassword(Client client, String newPass){
         Optional<Client> opClient = repository.findById(client.getId());
         if (opClient.isPresent()){
