@@ -51,7 +51,7 @@ public class ClientService {
     public void updatePassword(Client client, String newPass){
         Optional<Client> opClient = repository.findById(client.getId());
         if (opClient.isPresent()){
-            client.setClient_password(newPass);
+            client.setClientPassword(newPass);
         }
         repository.save(client);
     }

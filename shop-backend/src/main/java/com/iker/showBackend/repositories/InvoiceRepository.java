@@ -13,6 +13,6 @@ public interface InvoiceRepository extends CrudRepository<Invoice, Long> {
 
     Optional<Invoice> findById(Long id);
 
-    @Query("SELECT i.client_address, i.total_price FROM Invoice i WHERE client=?1")
+    @Query("SELECT i.clientAddress, i.totalPrice FROM Invoice i WHERE client=?1")
     Optional<Invoice> findByClientId(Long id);
 }

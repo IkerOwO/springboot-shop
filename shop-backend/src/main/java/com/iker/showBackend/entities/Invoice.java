@@ -20,14 +20,14 @@ public class Invoice {
     @JoinColumn(name = "id_client")
     private Client client;
 
-    private String client_address;
+    private String clientAddress;
     private double totalPrice;
 
     public Invoice(){}
     
-    public Invoice(Client client, String client_address, double totalPrice) {
+    public Invoice(Client client, String clientAddress, double totalPrice) {
         this.client = client;
-        this.client_address = client_address;
+        this.clientAddress = clientAddress;
         this.totalPrice = totalPrice;
     }
 
@@ -47,12 +47,12 @@ public class Invoice {
         this.client = client;
     }
 
-    public String getClient_address() {
-        return client_address;
+    public String getclientAddress() {
+        return clientAddress;
     }
 
-    public void setClient_address(String client_address) {
-        this.client_address = client_address;
+    public void setclientAddress(String clientAddress) {
+        this.clientAddress = clientAddress;
     }
 
     public double getTotalPrice() {
