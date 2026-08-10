@@ -1,33 +1,33 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import Link from 'next/link';
 
 export default function NavbarTop() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">Blog</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className="border-b border-slate-200 bg-white/80 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link href="/" className="text-xl font-semibold text-slate-900">
+          Game Shop
+        </Link>
+
+        <div className="flex items-center gap-4 text-sm text-slate-700">
+          <Link href="/" className="transition hover:text-slate-950">
+            Home
+          </Link>
+          <Link href="/shop" className="transition hover:text-slate-950">
+            Shop Products
+          </Link>
+          <Link href="/cart" className="transition hover:text-slate-950">
+            My Cart
+          </Link>
+
+          {/* Todo: Hacer que cuando se logue, aparezca el nombre del cliente y se quiten los botones */}
+          <Link href="/login" className="transition hover:text-slate-950">
+            Login
+          </Link>
+          <Link href="/register" className="transition hover:text-slate-950">
+            Register
+          </Link>
+        </div>
+      </div>
+    </nav>
   );
 }

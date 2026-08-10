@@ -2,14 +2,19 @@ package com.iker.showBackend.repositories;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.ResponseEntity;
+import com.iker.showBackend.entities.User;
 
-import org.springframework.data.repository.CrudRepository;
-
-import com.iker.showBackend.entities.Client;
-
-public interface ClientRepository extends CrudRepository<Client, Long> {
+public interface ClientRepository extends JpaRepository<User, Long> {
     
-    List<Client> findAll();
+    List<User> findAll();
 
-    Optional<Client> findById(Long id); 
+    Optional<User> findById(Long id); 
+
+    boolean existsByEmail(String email);
+
+    @Query("SELECT c.Name FROM Client c WHERE clientEmail=?1 AND clientPassword=?2")
+    ResponseEntity<?> login(String email, String password);
 }

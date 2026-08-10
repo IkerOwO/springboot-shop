@@ -2,14 +2,12 @@ package com.iker.showBackend.controllers;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.iker.showBackend.dto.InvoiceRequest;
 import com.iker.showBackend.entities.Invoice;
-import com.iker.showBackend.services.InvoiceService;
-
+import com.iker.showBackend.services.InvoiceServiceImpl;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class InvoiceController {
     
     @Autowired
-    private InvoiceService service;
+    private InvoiceServiceImpl service;
 
-    public InvoiceController(InvoiceService service) {
+    public InvoiceController(InvoiceServiceImpl service) {
         this.service = service;
     }
 
@@ -43,8 +41,8 @@ public class InvoiceController {
     }
 
     @PostMapping("/create")
-    public void createInvoice(@RequestBody Invoice invoice) {
-        service.createInvoice(invoice);
+    public void createInvoice(@RequestBody InvoiceRequest request) {
+        service.createInvoice(request);
     }
 
     @DeleteMapping("/{id}")

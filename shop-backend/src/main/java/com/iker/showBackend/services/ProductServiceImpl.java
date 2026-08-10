@@ -12,34 +12,38 @@ import com.iker.showBackend.repositories.ProductRepository;
 
 
 @Service
-public class ProductService {
+public class ProductServiceImpl implements IProductService{
     
     @Autowired
     private ProductRepository repository;
 
-    public ProductService(ProductRepository repository) {
+    public ProductServiceImpl(ProductRepository repository) {
         this.repository = repository;
     }
 
     @Transactional(readOnly = true)
+    @Override
     public List<Product> getAllProducts(){
         List<Product> products = repository.findAll();
         return products;
     }
 
     @Transactional(readOnly = true)
+    @Override
     public Optional<Product> getById(Long id){
         Optional<Product> productOptional = repository.findById(id);
         return productOptional;
     }
 
     @Transactional(readOnly = true)
+    @Override
     public List<Product> getCheaperProducts(){
         List<Product> cheapProducts = repository.getCheaperProducts();
         return cheapProducts;
     }
 
     @Transactional
+    @Override
     public void createProduct(Product product){
         // Comprobamos que no existe el producto
         Optional<Product> prOptional = repository.findById(product.getId());
@@ -50,6 +54,7 @@ public class ProductService {
     }
 
     @Transactional
+    @Override
     public void deleteProduct(Long Id){
         Optional<Product> prOptional = repository.findById(Id);
         prOptional.ifPresentOrElse(
@@ -59,11 +64,13 @@ public class ProductService {
     }
 
     @Transactional
-    public void updateProductStock(Product product, int newStock){
-        Optional<Product> prOptional = repository.findById(product.getId());
+    @Override
+    public void updateProductStock(Long id, int newStock){
+        Optional<Product> prOptional = repository.findById(id);
         if (prOptional.isPresent()){
+            Product product = prOptional.get();
             product.setStock(newStock);
+            repository.save(product);
         }
-        repository.save(product);
     }
 }

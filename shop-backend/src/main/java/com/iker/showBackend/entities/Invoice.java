@@ -18,14 +18,14 @@ public class Invoice {
 
     @ManyToOne
     @JoinColumn(name = "id_client")
-    private Client client;
+    private User client;
 
     private String clientAddress;
     private double totalPrice;
 
     public Invoice(){}
     
-    public Invoice(Client client, String clientAddress, double totalPrice) {
+    public Invoice(User client, String clientAddress, double totalPrice) {
         this.client = client;
         this.clientAddress = clientAddress;
         this.totalPrice = totalPrice;
@@ -39,11 +39,11 @@ public class Invoice {
         this.id = id;
     }
 
-    public Client getClient() {
+    public User getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(User client) {
         this.client = client;
     }
 
