@@ -2,13 +2,11 @@ package com.iker.showBackend.repositories;
 
 import java.util.List;
 import java.util.Optional;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-
 import com.iker.showBackend.entities.Invoice;
 
-public interface InvoiceRepository extends CrudRepository<Invoice, Long> {
+public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
     List<Invoice> findAll();
 
     Optional<Invoice> findById(Long id);
