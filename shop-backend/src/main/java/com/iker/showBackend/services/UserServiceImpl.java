@@ -7,18 +7,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.iker.showBackend.entities.User;
-import com.iker.showBackend.repositories.ClientRepository;
+import com.iker.showBackend.repositories.UserRepository;
 
 @Service
 public class UserServiceImpl implements IUserService {
     
     @Autowired
-    private ClientRepository repository;
+    private UserRepository repository;
 
     @Autowired
     private PasswordEncoder encoder;
 
-    public UserServiceImpl(ClientRepository repository, PasswordEncoder encoder) {
+    public UserServiceImpl(UserRepository repository, PasswordEncoder encoder) {
         this.repository = repository;
         this.encoder = encoder;
     }

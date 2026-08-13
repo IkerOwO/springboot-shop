@@ -15,5 +15,5 @@ public class LoginRequest {
 
     @NotBlank
     @IsRequired
-    private String password;
+    private String pass;
 }

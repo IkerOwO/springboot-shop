@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JwtService {
     private static final SecretKey SECRET_KEY = Jwts.SIG.HS256.key().build();
     

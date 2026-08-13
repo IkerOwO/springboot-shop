@@ -49,7 +49,7 @@ public class AuthServiceImpl implements IAuthService{
         User user = repository.findByEmail(request.getEmail())
             .orElseThrow(() -> new RuntimeException("Usuario no encontrado!"));
     
-        if (!encoder.matches(request.getPassword(), user.getPassword())) {
+        if (!encoder.matches(request.getPass(), user.getPassword())) {
             throw new RuntimeException("Las contraseñas no coinciden!");
         }
 

@@ -20,17 +20,17 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    private String password;
+    private String pass;
 
     private int phone;
 
 
     public User(){ }
     
-    public User(String username, String email, String password, int phone) {
+    public User(String username, String email, String pass, int phone) {
         this.username = username;
         this.email = email;
-        this.password = password;
+        this.pass = pass;
         this.phone = phone;
     }
 
@@ -59,11 +59,11 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String pass) {
+        this.pass = pass;
     }
 
     public int getPhone() {
